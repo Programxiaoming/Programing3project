@@ -4,6 +4,7 @@
 <meta charset="ISO-8859-1">
 <title>New Park</title>
 <link rel="stylesheet" href="./css/style.css"> 
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -22,7 +23,7 @@
         <div class="flex-wrapper">
           <ul class="desktop-nav">
             <li>
-              <a href="#P1" class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li>
               <a th:href="@{/register}" class="nav-link">Register</a>
@@ -40,7 +41,7 @@
             <p class="h3 nav-title">Main Menu</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/register}" class="nav-link">Register</a>
@@ -54,13 +55,13 @@
             <p class="h3 nav-title">Topics</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Users</a>
+                <a href="/users" class="nav-link">List of Users</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Orders</a>
+                <a href="/orders" class="nav-link">List of Orders</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Parks</a>
+                <a href="/parks" class="nav-link">List of Parks</a>
               </li>
             </ul>
           </div>
@@ -126,14 +127,11 @@
 						<div class="form-group row">
 				<label class="col-4 col-form-label"> Image: </label>
 				<div class="col-8">
-					<input type="file" name="park_image" class="form-control" accept="image/png, image/jpeg"/>
+					<input type="file" name="image" class="form-control" accept="image/png, image/jpeg"/>
 				</div>
 			</div>
 			
-
-			<div class="m-3">
-	
-				
+			<div class="m-3">			
 				<div class="form-group row">
 					<label class="col-4 col-form-label">Pulished: </label>
 					<div class="col-8">
@@ -141,10 +139,7 @@
 							required placeholder="Pulished" />
 					</div>
 				</div>
-
-		
-
-
+				
 				<div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>

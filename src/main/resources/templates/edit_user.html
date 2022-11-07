@@ -1,42 +1,20 @@
-<!-- <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8" />
-<title>Edit Product</title>
-</head>
-<body>
-	<div align="center">
-		<h1>Edit Product</h1> -->
-<!-- 		<br /> -->
-<!-- 		<form action="#" th:action="@{/save}" th:object="${user}"
-			method="post">
-			<table border="0" cellpadding="10">
-
-				<tr>
-					<td>Product ID:</td>
-					<td><input type="text" th:field="*{id}" readonly="readonly" />
-					</td>
-				</tr> -->
-<!-- 	<form action="#" th:action="@{/save}" th:object="${user}"
-			method="post" style="max-width: 800px; margin: 0 auto;">
- -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-  <meta charset="ISO-8859-1">
-  <title>Edit User</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>Edit User</title>
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body class="light-theme">
-  <header>
+	 <!--- #HEADER-->
+<header>
     <div class="container">
       <nav class="navbar">
-        <div class="btn-group">
+         <div class="btn-group">
           <button class="theme-btn theme-btn-mobile light">
           </button>
           <button class="nav-menu-btn">
@@ -47,7 +25,7 @@
         <div class="flex-wrapper">
           <ul class="desktop-nav">
             <li>
-              <a href="#P1" class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li>
               <a th:href="@{/register}" class="nav-link">Register</a>
@@ -62,114 +40,98 @@
             <ion-icon name="close-outline"></ion-icon>
           </button>
           <div class="wrapper">
-            <p class="h3 nav-title">Main Menu</p>
-            <ul>
-              <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
-              </li>
-              <li class="nav-item">
-                <a th:href="@{/register}" class="nav-link">Register</a>
-              </li>
-              <li class="nav-item">
-                <a th:href="@{/login}" class="nav-link">Login</a>
-              </li>
-            </ul>
+
           </div>
           <div>
-            <p class="h3 nav-title">Topics</p>
+            <p class="h3 nav-title">Operations</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Users</a>
+                <a href="/users" class="nav-link">List of Users</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Orders</a>
+                <a href="/orders" class="nav-link">List of Orders</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Parks</a>
+                <a href="/parks" class="nav-link">List of Parks</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
-  </header>
-  <div class="container text-center">
-    <div>
-      <h1>Edit User</h1>
-    </div>
-    <form action="#" th:action="@{/save}" th:object="${user}" method="post" style="max-width: 800px; margin: 0 auto;">
+</header>
 
-      <div class="form-group row">
-        <label class="col-4 col-form-label">User ID: </label>
-        <div class="col-8">
-          <input type="text" th:field="*{id}" class="form-control" readonly="readonly" />
-        </div>
-      </div>
+	<div class="container text-center">
+		<div>
+			<h1>Edit User</h1>
+		</div>
+		<form action="#" th:action="@{/save}" th:object="${user}"
+			method="post" style="max-width: 800px; margin: 0 auto;">
 
-
-      <div class="form-group row">
-        <label class="col-4 col-form-label">User Name: </label>
-        <div class="col-8">
-          <input type="text" th:field="*{userName}" class="form-control" required minlength="2" maxlength="15"
-            placeholder="Enter full name" />
-        </div>
-      </div>
-
-      <div>
-        <input type="hidden" th:field="*{password}" readonly="readonly" />
-      </div>
+			<div class="form-group row">
+				<label class="col-4 col-form-label">User ID: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{id}" class="form-control" 
+						readonly="readonly"  />
+				</div>
+			</div>
 
 
+			<div class="form-group row">
+				<label class="col-4 col-form-label">User Name: </label>
+				<div class="col-8">
+					<input type="text" th:field="*{userName}" class="form-control"
+						required minlength="2" maxlength="15"
+						placeholder="Enter full name" />
+				</div>
+			</div>
 
-      <div class="m-3">
-        <div class="form-group row">
-          <label class="col-4 col-form-label">E-mail: </label>
-          <div class="col-8">
-            <input type="email" th:field="*{email}" class="form-control" required />
-          </div>
-        </div>
+			    <div >
+				<input type="hidden" th:field="*{password}" 
+							readonly="readonly" />					
+					</div>
 
+			<div class="m-3">
+				<div class="form-group row">
+					<label class="col-4 col-form-label">E-mail: </label>
+					<div class="col-8">
+						<input type="email" th:field="*{email}" class="form-control"
+							required />
+					</div>
+				</div>		
 
+				<div class="form-group row">
+					<label class="col-4 col-form-label"> Role: </label>
+					<div class="col-8">
+						<input type="radio" th:field="*{role}"  required value="admin" />Admin 
+						<input type="radio" th:field="*{role}"  required value="user" />User					
+					</div>
+				</div>
 
-        <div class="form-group row">
-          <label class="col-4 col-form-label"> Role: </label>
-          <div class="col-8">
-            <input type="radio" th:field="*{role}" required value="admin" /> Admin
-            <input type="radio" th:field="*{role}" required value="user" />User
-
-          </div>
-        </div>
-
-
-
-        <!-- 		<div class="form-group row">
+				<div class="form-group row">
 					<label class="col-4 col-form-label"> Created at: </label>
 					<div class="col-8">
 						<input type="date" th:field="*{CreatedAt}" class="form-control"/>
 							
 					</div>
 				</div>
-				
-				
-								<div class="form-group row">
+			
+				<div class="form-group row">
 					<label class="col-4 col-form-label"> Updated At: </label>
 					<div class="col-8">
 						<input type="date" th:field="*{updatedAt}" class="form-control" />
 							
 					</div>
 				</div>
- -->
 
-
-
-        <div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <!--- #FOOTER-->
+				<div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	 <!--- #FOOTER-->
   <footer>
     <div class="container">
       <div class="wrapper">
@@ -215,5 +177,4 @@
     </p>
   </footer>
 </body>
-
 </html>

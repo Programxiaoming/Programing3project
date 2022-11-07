@@ -3,7 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Sign Up</title>
-<link rel="stylesheet" href="./css/style.css"> 
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -22,7 +23,7 @@
         <div class="flex-wrapper">
           <ul class="desktop-nav">
             <li>
-              <a href="#P1" class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li>
               <a th:href="@{/register}" class="nav-link">Register</a>
@@ -40,7 +41,7 @@
             <p class="h3 nav-title">Main Menu</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/register}" class="nav-link">Register</a>
@@ -54,13 +55,13 @@
             <p class="h3 nav-title">Topics</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Users</a>
+                <a href="/users" class="nav-link">List of Users</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Orders</a>
+                <a href="/orders" class="nav-link">List of Orders</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Parks</a>
+                <a href="/parks" class="nav-link">List of Parks</a>
               </li>
             </ul>
           </div>
@@ -81,9 +82,7 @@
 					<input type="number" th:field="*{id}" class="form-control"  placeholder="User ID" />
 					<div class="alert alert-danger" th:if="${#fields.hasErrors('id')}"
                     th:errors="*{id}"></div>
-				</div>
-				
-				
+				</div>			
 			</div>
 
 			<div class="form-group row">

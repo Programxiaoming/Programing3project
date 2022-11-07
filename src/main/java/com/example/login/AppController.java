@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
-
+	//u11/5/22k
 	@Autowired
 	private UserService service;
 
@@ -35,6 +35,7 @@ public class AppController {
 
 	@GetMapping("")
 	public String viewHomePage() {
+		
 		return "home";
 	}
 
@@ -53,6 +54,7 @@ public class AppController {
 		if (bindingResult.hasErrors()) {
 			return "signup_form";
 		}
+
 		userRepo.save(user);
 		return "register_success";
 	}
@@ -110,6 +112,7 @@ public class AppController {
 	@GetMapping("/orders")
 	public String listOrders(Model model) {
 		List<Order> listOrders = orderService.listAllOrder();
+
 		model.addAttribute("listOrders", listOrders);
 		return "orders";
 	}
@@ -139,16 +142,6 @@ public class AppController {
 		ModelAndView mav = new ModelAndView("edit_order");
 		Order order = orderService.get(orderId);
 		mav.addObject("order", order);
-
-		List<String> paymentOptions = new ArrayList<String>();
-		paymentOptions.add("Visa/Mastercard");
-		paymentOptions.add("E-transfer");
-		paymentOptions.add("PayPal");
-		paymentOptions.add("Gift Card");
-		mav.addObject("paymentOptions", paymentOptions);
-
-		List<Park> listParks = parkService.listAllPark();
-		mav.addObject("listParks", listParks);
 		return mav;
 	}
 
@@ -175,7 +168,17 @@ public class AppController {
 
 	@GetMapping("/parks")
 	public String listParks(Model model) {
-
+		// for testing
+		/*
+		 * Park x = new Park(); x.setAddress("123 street"); x.setIntroduction("abc");
+		 * x.setParkName("Centennial Park"); x.setPrice((float) 20);
+		 * x.setParkId("10000"); parkService.savePark(x);
+		 * 
+		 * Park y = new Park(); y.setAddress("1234 street"); y.setIntroduction("abcd");
+		 * y.setParkName("Autumn Park"); y.setPrice((float) 33); y.setParkId("20000");
+		 * parkService.savePark(y);
+		 */
+		 
 		List<Park> listParks = parkService.listAllPark();
 		model.addAttribute("listParks", listParks);
 		return "parks";
@@ -183,7 +186,10 @@ public class AppController {
 
 	@RequestMapping(value = "/savePark", method = RequestMethod.POST)
 	public String savePark(@Valid @ModelAttribute("park") Park park, BindingResult bindingResult, Model model,
-			@RequestParam("park_image") MultipartFile multipartFile) throws IOException {
+			@RequestParam("image") MultipartFile multipartFile) throws IOException {
+		if (bindingResult.hasErrors()) {
+			   return "new_park";
+			  }
 		if (multipartFile != null) {
 			try {
 				String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -196,11 +202,12 @@ public class AppController {
 				FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 				System.out.println("Successfully added park: " + savedPark.toString());
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("Problem with photo, skipping...");
+
 			}
 
 		} else {
-			System.out.println("Problem with photo, skipping...");
+			System.out.println("Photo is null, skipping verifications...");
 		}
 		return "redirect:/parks";
 
@@ -210,7 +217,6 @@ public class AppController {
 	public ModelAndView showEditParkPage(@PathVariable(name = "parkId") String parkId) {
 		ModelAndView mav = new ModelAndView("edit_park");
 		Park park = parkService.getPark(parkId);
-
 		mav.addObject("park", park);
 		return mav;
 	}

@@ -3,7 +3,8 @@
 <head>
 <meta  charset=UTF-8>
 <title>Registration Success</title>
-<link rel="stylesheet" href="./css/style.css"> 
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body class="light-theme">
 <header>
@@ -20,7 +21,7 @@
         <div class="flex-wrapper">
           <ul class="desktop-nav">
             <li>
-              <a href="#P1" class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li>
               <a th:href="@{/register}" class="nav-link">Register</a>
@@ -38,7 +39,7 @@
             <p class="h3 nav-title">Main Menu</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/register}" class="nav-link">Register</a>
@@ -49,16 +50,16 @@
             </ul>
           </div>
           <div>
-            <p class="h3 nav-title">Topics</p>
+            <p class="h3 nav-title">Operations</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Users</a>
+                <a href="/users" class="nav-link">List of Users</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Orders</a>
+                <a href="/orders" class="nav-link">List of Orders</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Parks</a>
+                <a href="/parks" class="nav-link">List of Parks</a>
               </li>
             </ul>
           </div>

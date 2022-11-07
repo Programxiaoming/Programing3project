@@ -3,16 +3,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List Users</title>
-<link rel="stylesheet" href="./css/style.css"> 
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-  <style>
-  .img-responsive{ 
-    max-height: 250px;
-    max-width: 200px;
-  }
-  </style>
 </head>
 <body class="light-theme">
 <header>
@@ -29,7 +24,7 @@
         <div class="flex-wrapper">
           <ul class="desktop-nav">
             <li>
-              <a href="#P1" class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li>
               <a th:href="@{/register}" class="nav-link">Register</a>
@@ -47,7 +42,7 @@
             <p class="h3 nav-title">Main Menu</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/register}" class="nav-link">Register</a>
@@ -61,35 +56,42 @@
             <p class="h3 nav-title">Topics</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Users</a>
+                <a href="/users" class="nav-link">List of Users</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Orders</a>
+                <a href="/orders" class="nav-link">List of Orders</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Parks</a>
+                <a href="/parks" class="nav-link">List of Parks</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-    </div>
-</header>
-	<div class="container text-center">
-		<div>
+      
+       <div class="div-welcome">
 			<form th:action="@{/logout}" method="post">
 				<p>
+					Welcome<b>[[${#request.userPrincipal.principal.fullName}]]</b>
 				</p>
 				<input type="submit" value="Sign Out" />
 			</form>
 		</div>
-		<div>
+		<div class="div-list">
+		<ul>
+			<li><a th:href="@{/users}">List of Users</a></li>
+			<li><a th:href="@{/parks}">List of Parks</a></li>
+			<li><a th:href="@{/orders}">List of Orders</a></li>
+		</ul>
 
-			<h3><a th:href="@{/users}">List of Users</a></h3>
-			<h3><a th:href="@{/parks}">List of Parks</a></h3>
-			<h3><a th:href="@{/orders}">List of Orders</a></h3>
-			
-						<h1>List of Parks</h1>
+		</div>
+    </div>
+</header>
+	<div class="container text-center">
+		<div>
+		</div>
+		<div>
+						<h3>List of Parks</h3>
 			<a href="/newPark">Create New Park</a> <br />
 		</div>
 		<div>
@@ -117,11 +119,11 @@
 						<td th:text="${park.parkName}">Park Name</td>
 						<td th:text="${park.address}">Park Address</td>
 						<td th:text="${park.introduction}">Introduction</td>
-						<td><img th:src="${park.imagePath}" th:class="img-responsive" /></td>
+						<td><img th:src="${park.imagePath}" /></td>
 						<td th:text="${park.price}">Price</td>
-						<td th:text="${park.pulished}">Pulished</td>
-						<td th:text="${park.createdAt}">created at</td>
-						<td th:text="${park.updatedAt}">updated at</td>
+						<td th:text="${park.pulished}">Published</td>
+						<td th:text="${park.createdAt}">Created at</td>
+						<td th:text="${park.updatedAt}">Updated at</td>
 						
 
 						<td><a th:href="@{'/editPark/' + ${park.ParkId}}">Edit</a>

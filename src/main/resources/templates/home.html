@@ -43,7 +43,7 @@
             <p class="h3 nav-title">Main Menu</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="#P1" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/register}" class="nav-link">Register</a>
@@ -54,16 +54,16 @@
             </ul>
           </div>
           <div>
-            <p class="h3 nav-title">Topics</p>
+            <p class="h3 nav-title">Create New</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Users</a>
+                <a href="/register" class="nav-link">Create New User</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Orders</a>
+                <a href="/newOrder" class="nav-link">Create New Order</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Parks</a>
+                <a href="/newPark" class="nav-link">Create New Park</a>
               </li>
             </ul>
           </div>
@@ -454,28 +454,28 @@
 
         <div class="aside">
           <div class="topics">
-            <h2 class="h2">Parks</h2>
-            <a href="#" class="topic-btn">
+            <h2 class="h2">New Operation</h2>
+            <a href="/register" class="topic-btn">
               <div class="icon-box">
                 <ion-icon name="server-outline"></ion-icon>
               </div>
-              <p>Mount Royal Park</p>
+              <p>Create New User</p>
             </a>
 
-            <a href="#" class="topic-btn">
+            <a href="/newOrder" class="topic-btn">
               <div class="icon-box">
                 <ion-icon name="accessibility-outline"></ion-icon>
               </div>
 
-              <p>Montreal Botanical Garden</p>
+              <p>Create New Order</p>
             </a>
 
-            <a href="#" class="topic-btn">
+            <a href="/newPark" class="topic-btn">
               <div class="icon-box">
                 <ion-icon name="rocket-outline"></ion-icon>
               </div>
 
-              <p>Bois de Liesse Park</p>
+              <p>Create New Park</p>
             </a>
 
           </div>
@@ -485,14 +485,16 @@
             <h2 class="h2">Tags</h2>
 
             <div class="wrapper">
-
+              <button class="hashtag">#Mount Royal Park</button>
+              <button class="hashtag">#Botanical Garden</button>
+              <button class="hashtag">#Bois-de-Liesse</button>
               <button class="hashtag">#Morgan Arboretum</button>
               <button class="hashtag">#Old Port</button>
               <button class="hashtag">#Parc Jean Drapeau</button>
               <button class="hashtag">#Parc Angrignon</button>
               <button class="hashtag">#Bois de l'Ile Bizard</button>
               <button class="hashtag">#Parc La Fontaine</button>
-              <button class="hashtag">#Parc Cap Saint Jacques</button>
+              <button class="hashtag">#Cap Saint Jacques</button>
             </div>
           </div>
           <div class="contact">

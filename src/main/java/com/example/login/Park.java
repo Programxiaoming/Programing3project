@@ -20,53 +20,52 @@ import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "park")
+@Table(name="park")
 public class Park {
 	@Id
-	@Column(nullable = false, length = 5)
-	@NotBlank(message = "Please enter your staff ID")
-	@Pattern(regexp = "^\\d{5}$", message = "please enter exactly 5 number")
+	@Column(nullable=false,length=5)
+	@NotBlank(message="Please enter your staff ID")
+	@Pattern(regexp="^\\d{5}$", message="please enter exactly 5 number")
 	private String parkId;
-
-	@Column(nullable = false, length = 40)
+	
+	@Column(nullable=false, length=40)
 	private String parkName;
+	
+	@Column(nullable=false)
 
-	@Column(nullable = false)
-
-	@Min(10)
-	@Max(200)
+	@Min(value=10, message="Please enter 10-200")
+	@Max(value=200, message="Please enter 10-200")
 	private Float price;
-
-	@Column(nullable = false)
+	
+	@Column(nullable=false)
 	private String address;
-
-	@Column(nullable = true)
+	
+	@Column(nullable=true)
 	private String introduction;
-
-	@Column(nullable = true)
+	
+	@Column(nullable=true)
 	private String image;
-
-	@Column(nullable = true)
+	
+	@Column(nullable=true)
 	private String pulished;
-
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
-	@Column(nullable = false, updatable = false)
+	
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	private Date createdAt;
-
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	private Date updatedAt;
-
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "OrderId")
 	private Order order;
-
+	
 	@Transient
-	public String getImagePath() {
-		if (image == null || parkId == null)
-			return null;
-
-		return "/park-photos/" + parkId + "/" + image;
-	}
+    public String getImagePath() {
+        if (image == null || parkId == null) return null;
+         
+        return "/park-photos/" + parkId + "/" + image;
+    }
 
 	public String getParkId() {
 		return parkId;
@@ -91,6 +90,7 @@ public class Park {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
+
 
 	public String getAddress() {
 		return address;
@@ -124,6 +124,7 @@ public class Park {
 		this.pulished = pulished;
 	}
 
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -139,7 +140,6 @@ public class Park {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
 	public Order getOrder() {
 		return order;
 	}
@@ -147,6 +147,8 @@ public class Park {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+
+	
 
 	@Override
 	public String toString() {
@@ -165,4 +167,6 @@ public class Park {
 		updatedAt = new Date();
 	}
 
+	
+	
 }

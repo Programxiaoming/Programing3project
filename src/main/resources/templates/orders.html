@@ -3,7 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List Users</title>
-<link rel="stylesheet" href="./css/style.css"> 
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -23,7 +24,7 @@
         <div class="flex-wrapper">
           <ul class="desktop-nav">
             <li>
-              <a href="#P1" class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li>
               <a th:href="@{/register}" class="nav-link">Register</a>
@@ -41,7 +42,7 @@
             <p class="h3 nav-title">Main Menu</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
                 <a th:href="@{/register}" class="nav-link">Register</a>
@@ -55,40 +56,42 @@
             <p class="h3 nav-title">Topics</p>
             <ul>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Users</a>
+                <a href="/users" class="nav-link">List of Users</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Orders</a>
+                <a href="/orders" class="nav-link">List of Orders</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">List of Parks</a>
+                <a href="/parks" class="nav-link">List of Parks</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
+        <div class="div-welcome">
+			<form th:action="@{/logout}" method="post">
+				<p>
+					Welcome<b>[[${#request.userPrincipal.principal.fullName}]]</b>
+				</p>
+				<input type="submit" value="Sign Out" />
+			</form>
+		</div>
+		<div class="div-list">
+		<ul>
+			<li><a th:href="@{/users}">List of Users</a></li>
+			<li><a th:href="@{/parks}">List of Parks</a></li>
+			<li><a th:href="@{/orders}">List of Orders</a></li>
+		</ul>
+
+		</div>
     </div>
 </header>
 	<div class="container text-center">
 		<div>
-			<form th:action="@{/logout}" method="post">
-				<p></p>
-				<input type="submit" value="Sign Out" />
-			</form>
 		</div>
 		<div>
 
-			<h3>
-				<a th:href="@{/users}">List of Users</a>
-			</h3>
-			<h3>
-				<a th:href="@{/parks}">List of Parks</a>
-			</h3>
-			<h3>
-				<a th:href="@{/orders}">List of Orders</a>
-			</h3>
-
-			<h1>List of Orders</h1>
+			<h3>List of Orders</h3>
 			<a href="/newOrder">Create New Order</a> <br />
 		</div>
 		<div>
@@ -109,9 +112,9 @@
 					<tr th:each="order: ${listOrders}">
 
 						<td th:text="${order.OrderId}">Order ID</td>
-						<td th:text="${order.payment}">payment</td>
+						<td th:text="${order.payment}">Payment</td>
 						<td><span th:each="park : ${order.parks}"><span th:text="${park.parkName}"></span>  </td>
-						<td th:text="${order?.user?.userName}">username</td>
+						<td th:text="${order?.user?.userName}">Username</td>
 						<td><a th:href="@{'/editOrder/' + ${order.orderId}}">Edit</a>
 							&nbsp;&nbsp;&nbsp; <a
 							th:href="@{'/deleteOrder/' + ${order.orderId}}">Delete</a></td>
