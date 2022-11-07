@@ -30,7 +30,7 @@ public class Order {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "parks_ordered", joinColumns = @JoinColumn(name = "OrderId", referencedColumnName = "OrderId"), inverseJoinColumns = @JoinColumn(name = "parkId", referencedColumnName = "parkId"))
 	private List<Park> parks;
 

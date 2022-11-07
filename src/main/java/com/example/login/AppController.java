@@ -35,15 +35,7 @@ public class AppController {
 
 	@GetMapping("")
 	public String viewHomePage() {
-		User kevin = new User();
-		kevin.setEmail("kevindarby5@gmail.com");
-		kevin.setId("1234");
-		kevin.setUserName("Kevin D");
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encodedPassword = passwordEncoder.encode("1qaz2wsx");
-		kevin.setPassword(encodedPassword);
-		kevin.setRole("user");
-		userRepo.save(kevin);
+	
 		return "home";
 	}
 
