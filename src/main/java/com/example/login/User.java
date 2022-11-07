@@ -43,15 +43,14 @@ public class User {
 	private String password;
 
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
-	@CreationTimestamp
+	@Column(nullable = false, updatable = false)
 	private Date createdAt;
 
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
-	@UpdateTimestamp
 	private Date updatedAt;
-//@JoinColumn(name = "user_id", referencedColumnName = "id")
 
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
 	private List<Order> user_orders;
 
 
@@ -141,11 +140,11 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 
-	/*
-	 * @PrePersist protected void onCreate() { createdAt = new Date(); }
-	 * 
-	 * @PreUpdate protected void onUpdate() { updatedAt = new Date(); }
-	 */
+	
+	 @PrePersist protected void onCreate() { createdAt = new Date(); }
+	 
+	 @PreUpdate protected void onUpdate() { updatedAt = new Date(); }
+	 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", role=" + role + ", password="

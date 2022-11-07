@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
-	//u11/5/22k
+
 	@Autowired
 	private UserService service;
 
@@ -35,7 +35,15 @@ public class AppController {
 
 	@GetMapping("")
 	public String viewHomePage() {
-		
+		User kevin = new User();
+		kevin.setEmail("kevindarby5@gmail.com");
+		kevin.setId("1234");
+		kevin.setUserName("Kevin D");
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode("1qaz2wsx");
+		kevin.setPassword(encodedPassword);
+		kevin.setRole("user");
+		userRepo.save(kevin);
 		return "home";
 	}
 
@@ -142,6 +150,16 @@ public class AppController {
 		ModelAndView mav = new ModelAndView("edit_order");
 		Order order = orderService.get(orderId);
 		mav.addObject("order", order);
+
+		List<String> paymentOptions = new ArrayList<String>();
+		paymentOptions.add("Visa/Mastercard");
+		paymentOptions.add("E-transfer");
+		paymentOptions.add("PayPal");
+		paymentOptions.add("Gift Card");
+		mav.addObject("paymentOptions", paymentOptions);
+
+		List<Park> listParks = parkRepo.findAll();
+		mav.addObject("listParks", listParks);
 		return mav;
 	}
 
@@ -186,7 +204,7 @@ public class AppController {
 
 	@RequestMapping(value = "/savePark", method = RequestMethod.POST)
 	public String savePark(@Valid @ModelAttribute("park") Park park, BindingResult bindingResult, Model model,
-			@RequestParam("image") MultipartFile multipartFile) throws IOException {
+			@RequestParam("park_image") MultipartFile multipartFile) throws IOException {
 		if (bindingResult.hasErrors()) {
 			   return "new_park";
 			  }

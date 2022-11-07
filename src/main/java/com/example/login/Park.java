@@ -50,6 +50,7 @@ public class Park {
 	private String pulished;
 	
 	@DateTimeFormat(pattern="yyyy-mm-dd")
+	@Column(nullable = false, updatable = false)
 	private Date createdAt;
 	
 	@DateTimeFormat(pattern="yyyy-mm-dd")
